@@ -1,0 +1,144 @@
+\documentclass[11pt, a4paper]{article}
+
+% based on the template files shared by Ms. Kiel Granada
+% the rest of the declarations in the preamble are now stored in 
+% the pshsmathmodules package that comes with this file
+% the images are in the images folder
+ 
+% load the set up commands
+\usepackage{pshsmathmodules}
+
+% use APA for bibtex/bibliography
+\bibliographystyle{apacite}
+
+
+\begin{document}
+
+
+
+\begin{tabbing}
+\hspace*{1in} \= \hspace{1in} \=.\kill
+\noindent \textbf{Subject Code} \> {} \\
+\textbf{Module Code} \> {} \> \emph{({})}\\
+\textbf{Lesson Code} \> {} \> \emph{({})}\\
+\textbf{Time Limit} \> 30 minutes
+\end{tabbing}
+
+%%%
+% All of the commands \target{<TA>}{<ATA>}, \hook{<TA>}{<ATA>}, \ignite{<TA>}{<ATA>}, 
+% \navigate{<TA>}{<ATA>}, \knot{<TA>}{<ATA>} require two arguments: TA and ATA.
+% Leave the arguments blank if not required, but retain the curly braces.
+%%%
+
+
+\target{1 minute}{}
+\noindent By the end of this lesson, the student will have been able to:
+\begin{enumerate}
+\item discuss the properties of the definite integral; and,
+\item apply the different properties of the definite integral in solving definite integral problems.
+\end{enumerate}
+
+\hook{1 minute}{}
+
+In our previous lesson, we had evaluated definite integrals whose integrands have graphs that are common plane figures. Thus, we were able to use corresponding formulas in geometry to find the area under a curve. We also evaluated a definite integral analytically using the limit of the Riemann sum, as $n\to\infty$. However, the methods that we know may be difficult to apply depending on the integrand. We will need some properties to efficiently evaluate definite integrals in a simple manner. 
+
+
+\ignite{17 minutes}{17 minutes}
+
+In the definition of the definite integral, we assumed that the lower limit $a$ is lesser than the upper limit $b$; that is, $a<b$. The other possibilities include $a>b$ and $a=b$.
+
+% the property environment produces a boxed environment
+% the syntax is \begin{property}[<title>]{<label>}...\end{property}
+\begin{property}[]{prop1}
+If $a>b$, and $\int_b^a f(x)\, dx$, then
+\begin{equation}
+\int_a^b f(x)\, dx = -\int_b^a f(x)\, dx
+\end{equation}
+\end{property}
+
+\begin{example}
+Knowing that $\int_{-4}^4\sqrt{16-x^2}\, dx=8\pi$, evaluate $\int_4^{-4}\sqrt{16-x^2}\, dx$.
+\end{example}
+
+From property 1,
+\begin{align*}
+\int_4^{-4}\sqrt{16-x^2}\,dx &= -\int_{-4}^4\sqrt{16-x^2}\, dx\\
+	&= -8\pi
+\end{align*}
+
+\newpage
+\begin{property}[]{prop2}
+If $f(a)$ exists, then
+\begin{equation}
+\int_a^a f(x)\, dx = 0.
+\end{equation}
+\end{property}
+
+% the example environment produces numbered examples
+\begin{example}
+$\dint_1^1\sqrt{16-x^2}\,dx=0$, by property 2. The amount of space occupied is 0, though $f(1)$ exists.
+\end{example}
+
+\navigate{10 minutes}{}
+
+\section*{PRACTICE EXERCISES (Nongraded)}
+
+Suppose that $f(x)$ is continuous on the closed interval $[a,e]$ such that $a<b<c<d<e$, and
+\begin{align*}
+\int_a^b f(x)\, dx & = -2,\\
+\int_a^c f(x)\, dx & = 1,\\
+\int_b^e f(x)\, dx & =-1,\,\text{and}\\
+\int_d^e f(x)\, dx & = 1
+\end{align*}
+Solve the following definite integrals. Show sufficient solutios.
+
+% \dint is defined in the attached package
+\begin{enumerate}
+\item $\dint_b^c f(x)\, dx$
+\item $\dint f(x)\, dx+\int_c^c f(x)\, dx$
+\item $\int_c^d-f(x)\, dx$
+\end{enumerate}
+
+\knot{1 minute}{}
+
+\section*{IN A NUTSHELL}
+
+The properties of the definite integral are very useful in manipulating the terms to evaluate any definite integral.
+
+% the references are attached in the file references.bib
+\nocite{herman}
+\nocite{leithold}
+\nocite{stewart}
+\bibliography{references.bib}
+
+
+
+
+\begin{tabbing}
+\hspace{1in}	\= \hspace{2in} \= \hspace{1in} \= \hspace{2in} 	\kill\\
+Prepared by:	\> Kenneth C. Balili	\> Reviewed by:	\> Rommel Gregorio\\
+Position: 	\> Special Science Teacher IV 	\> Position: \> Special Science Teacher V\\
+Campus:	\> PSHS-CVisC	\> Campus: 	\> PSHS-CLC
+\end{tabbing}
+\label{EndofModule}
+
+%% Include this for the copyright notice
+\renewcommand*\footnoterule{}
+\let\thefootnote\relax\footnotetext{\hspace{-0.25in}\copyright\ 2020 Philippine Science High School System. All rights reserved. This document may contain proprietary information and may only be released to third parties with approval of management. Document is uncontrolled unless otherwise marked; uncontrolled documents are not subject to update information.}
+
+\newpage
+\pagestyle{empty}
+
+\section*{ANSWER KEY}
+
+\noindent\underline{Navigate}
+
+\begin{enumerate}
+\item $\dint_b^c f(x)\, dx = 3$
+\item $\dint_a^c f(x)\, dx+\dint_c^e f(x)\, dx=-3$
+\item $\dint_c^d -f(x)\, dx = 5$
+\end{enumerate}
+
+
+
+\end{document}

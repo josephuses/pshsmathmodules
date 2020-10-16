@@ -1,0 +1,280 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pshsmathmodules}[2020/10/16 PSHS Math Modules LaTeX package]
+
+\RequirePackage{amsmath, amsfonts, amssymb}
+\RequirePackage{pstricks}
+\RequirePackage{pst-plot}
+\RequirePackage{multicol}
+\RequirePackage{setspace}
+\RequirePackage{enumerate}
+\RequirePackage{enumitem}
+\RequirePackage{graphicx}
+\RequirePackage{wrapfig}
+\RequirePackage{apacite}
+\RequirePackage{makecell}
+\RequirePackage{multirow}
+\RequirePackage{rotating}
+\RequirePackage{caption}
+\RequirePackage{url}
+\RequirePackage{pifont}
+\RequirePackage{hyperref}
+\RequirePackage{amsthm}
+\RequirePackage{calc}
+\RequirePackage{draftwatermark}
+
+
+%document format
+\RequirePackage{mathptmx}
+%\ProcessOptions\relax
+
+ %sets font to similar to Times New Roman
+
+\RequirePackage{titlesec} %adjusts fonts sizes of sections
+
+\titleformat*{\section}{\normalsize\bfseries}
+\titleformat*{\subsection}{\normalsize\bfseries}
+\titleformat*{\subsubsection}{\normalsize\bfseries}
+\titleformat*{\paragraph}{\normalsize\bfseries}
+\titleformat*{\subparagraph}{\normalsize\bfseries}
+
+%\RequirePackage{paralist}
+%\setdefaultenum{1.}{A.}{}{}
+
+\RequirePackage[none]{hyphenat}
+\setlength{\columnsep}{0.3in}
+
+\RequirePackage{enumitem}
+\setlist{nosep} % or \setlist{noitemsep} to leave space around whole list
+
+\RequirePackage[a4paper, margin=1in]{geometry}
+
+\RequirePackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{\textbf{Mathematics 6} Page \thepage\ of \pageref{EndofModule}}
+\renewcommand\headrulewidth{0pt}
+
+%\renewcommand\familydefault{\sfdefault}
+
+%\pagestyle{counter}
+
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\newlist{oddenumerate}{enumerate}{1}
+\setlist[oddenumerate]{start=0,label=\theoddenumeratei.}
+\makeatletter
+\renewcommand\theoddenumeratei{\@arabic{\numexpr2*\value{oddenumeratei}+1}}
+\makeatother
+
+\newlist{evenenumerate}{enumerate}{1}
+\setlist[evenenumerate]{start=1,label=\theevenenumeratei.}
+\makeatletter
+\renewcommand\theevenenumeratei{\@arabic{\numexpr2*\value{evenenumeratei}}}
+\makeatother
+
+\RequirePackage[framemethod=TikZ]{mdframed}
+
+\newcounter{prop}\setcounter{prop}{0}
+\newcommand{\prop}{\arabic{prop}}
+
+\newenvironment{property}[2][]{%
+	\refstepcounter{prop}
+
+	\ifstrempty{#1}%
+% if condition (without title)
+{\mdfsetup{%
+    frametitle={%
+        \tikz[baseline=(current bounding box.east),outer sep=0pt]
+        \node[anchor=east,rectangle,fill=blue!50]
+        {\strut Property~\prop};}
+    }%
+% else condition (with title)
+}{\mdfsetup{%
+    frametitle={%
+        \tikz[baseline=(current bounding box.east),outer sep=0pt]
+        \node[anchor=east,rectangle,fill=blue!50]
+        {\strut Property~\prop:~#1};}%
+    }%
+}%
+% Both conditions
+\mdfsetup{%
+    innertopmargin=0pt,linecolor=blue!50,%
+    linewidth=1.5pt,topline=true,%
+    frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
+}	
+	
+\begin{mdframed}[]\relax%
+}{%
+\vspace{\topskip}
+\end{mdframed}
+}
+
+
+%%
+% if 2nd argument is empty, put a dash line,
+% else, write the actual ATA
+%%
+
+\newcommand{\target}[2]{
+\par
+\vspace*{\topskip}
+\noindent
+\begin{minipage}{0.33\linewidth}
+\noindent\raisebox{-0.4\height}{\noindent\includegraphics[scale=2]{./images/target}} \underline{\textbf{TARGET}}
+\end{minipage}%
+\begin{minipage}{0.33\linewidth}
+\centering
+TA: #1 
+\end{minipage}%
+\begin{minipage}{0.33\linewidth}
+\raggedleft
+\def\ataok{#2}%
+\ifx\ataok\empty%
+ATA: \rule{\widthof{17 minutes}}{1pt}%
+\else
+ATA: #2
+\fi
+\end{minipage}
+%\par\relax
+%\noindent\rule{\textwidth}{1.5pt}
+\par
+\vspace{\topskip}
+}
+
+\newcommand{\navigate}[2]{
+\par
+\vspace*{\topskip}
+\noindent
+\begin{minipage}{0.33\linewidth}
+\noindent\raisebox{-0.4\height}{\noindent\includegraphics[scale=2]{./images/navigate}} \underline{\textbf{NAVIGATE}}
+\end{minipage}%
+\begin{minipage}{0.33\linewidth}
+\centering
+TA: #1 
+\end{minipage}%
+\begin{minipage}{0.33\linewidth}
+\raggedleft
+\def\ataoka{#2}%
+\ifx\ataoka\empty%
+ATA: \rule{\widthof{17 minutes}}{1pt}%
+\else
+ATA: #2
+\fi
+\end{minipage}
+%\par\relax
+%\noindent\rule{\textwidth}{1.5pt}
+%\par
+\par
+\vspace{\topskip}
+}
+
+\newcommand{\hook}[2]{
+\par
+\vspace*{\topskip}
+\noindent
+\begin{minipage}{0.33\linewidth}
+\noindent\raisebox{-0.4\height}{\noindent\includegraphics[scale=2]{./images/hook}} \underline{\textbf{HOOK}}
+\end{minipage}%
+\begin{minipage}{0.33\linewidth}
+\centering
+TA: #1 
+\end{minipage}%
+\begin{minipage}{0.33\linewidth}
+\raggedleft
+\def\ataokb{#2}%
+\ifx\ataokb\empty%
+ATA: \rule{\widthof{17 minutes}}{1pt}%
+\else
+ATA: #2
+\fi
+\end{minipage}
+%\par\relax
+%\noindent\rule{\textwidth}{1.5pt}
+%\par
+\par
+\vspace{\topskip}
+}
+
+\newcommand{\knot}[2]{
+\par
+\vspace*{\topskip}
+\noindent
+\begin{minipage}{0.33\linewidth}
+\noindent\raisebox{-0.4\height}{\noindent\includegraphics[scale=2]{./images/knot}} \underline{\textbf{KNOT}}
+\end{minipage}%
+\begin{minipage}{0.33\linewidth}
+\centering
+TA: #1 
+\end{minipage}%
+\begin{minipage}{0.33\linewidth}
+\raggedleft
+\def\ataokc{#2}%
+\ifx\ataokc\empty%
+ATA: \rule{\widthof{17 minutes}}{1pt}%
+\else
+ATA: #2
+\fi
+\end{minipage}
+%\par\relax
+%\noindent\rule{\textwidth}{1.5pt}
+%\par
+\par
+\vspace{\topskip}
+}
+
+\newcommand{\ignite}[2]{
+\par
+\vspace*{\topskip}
+\noindent
+\begin{minipage}{0.33\linewidth}
+\noindent\raisebox{-0.4\height}{\noindent\includegraphics[scale=2]{./images/ignite}} \underline{\textbf{IGNITE}}
+\end{minipage}%
+\begin{minipage}{0.33\linewidth}
+\centering
+TA: #1 
+\end{minipage}%
+\begin{minipage}{0.33\linewidth}
+\raggedleft
+\def\ataokd{#2}%
+\ifx\ataokd\empty%
+ATA: \rule{\widthof{17 minutes}}{1pt}%
+\else
+ATA: #2
+\fi
+\end{minipage}
+%\par\relax
+%\noindent\rule{\textwidth}{1.5pt}
+%\par
+\par
+\vspace{\topskip}
+}
+
+\AtBeginDocument{
+\SetWatermarkText{\noindent\raisebox{8.8\height}{\hspace{-1in}\includegraphics[scale=0.3]{./images/watermark}}}
+\SetWatermarkAngle{0}
+	\noindent
+	\begin{minipage}{0.75in}
+	\includegraphics[scale=1.25]{./images/pshslogo}
+	\end{minipage}%
+	\begin{minipage}{4in}
+	\raggedright
+	Republic of the Philippines\\
+	Department of Science and Technology\\
+	PHILIPPINE SCIENCE HIGH SCHOOL SYSTEM
+	\end{minipage}
+	\par\relax
+	\vspace{\topskip}
+	\noindent\rule{\textwidth}{2pt}
+	% include the footnote in the first page
+	\let\thefootnote\relax\footnotetext{TA: Time allocation, in minutes, set by the teacher}
+	\let\thefootnote\relax\footnotetext{ATA: Actual time allocation, in minutes, spent by the student (for information purposes only)}
+	\vspace*{-2\topskip}
+}
+
+\theoremstyle{definition}
+\newtheorem{example}{\textbf{Example}}
+
+\newcommand{\dint}{\ensuremath{\displaystyle\int}}
+
+\renewcommand*\footnoterule{}
